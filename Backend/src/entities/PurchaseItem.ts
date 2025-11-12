@@ -3,10 +3,8 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryColumn,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { User } from "./User";
 import { Product } from "./Product";
 import { Purchase } from "./Purchase";
 

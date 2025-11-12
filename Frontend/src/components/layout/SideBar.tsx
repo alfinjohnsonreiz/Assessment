@@ -1,0 +1,33 @@
+import { Link, useLocation } from "react-router-dom";
+
+const Sidebar = () => {
+
+  const menuItems = [
+    { name: "Dashboard", path: "/" },
+    { name: "Add Product", path: "/" },
+    { name: "Display Products", path: "/products" },
+    { name: "Purchase", path: "/purchase" },
+    { name: "Purchase", path: "/settings" },
+  ];
+
+  return (
+    <div className="w-64">
+      <div className="p-4 text-xl  ">
+        MyApp
+      </div>
+      <nav className="flex-1 p-4  ">
+        {menuItems.map((item) => (
+          <Link
+            key={item.path}
+            to={item.path}
+            className={`block  p-2`}
+          >
+            {item.name}
+          </Link>
+        ))}
+      </nav>
+    </div>
+  );
+};
+
+export default Sidebar;

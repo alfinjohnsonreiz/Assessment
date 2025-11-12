@@ -7,6 +7,8 @@ import { Purchase } from "../entities/Purchase";
 import { SaleItem } from "../entities/SaleItem";
 import { Sale } from "../entities/Sale";
 import { Stock } from "../entities/Stock";
+import { Bill } from "../entities/Bill";
+import { BillItem } from "../entities/BillItem";
 dotenv.config();
 
 export const AppDataSource = new DataSource({
@@ -18,5 +20,5 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,
   synchronize: true,
   logging: false,
-  entities: [User,Product,PurchaseItem,Purchase,Stock,SaleItem,Sale],
+  entities: [User,Product,PurchaseItem,Purchase,Stock,SaleItem,Sale,Bill,BillItem],
 });

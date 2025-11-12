@@ -1,6 +1,4 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
-// import { Cart } from "./Cart";
-// import { Order } from "./Order";
+import { Column, CreateDateColumn, Entity,PrimaryGeneratedColumn } from "typeorm";
 
 export enum UserRole{
   ADMIN='admin',
@@ -29,9 +27,4 @@ export class User {
   @Column()
   image: string;
 
-//   @OneToMany(()=>Cart,cart=>cart.user)
-//   carts:Cart[]
-
-//  @OneToMany(() => Order, (order) => order.user)
-//   orders: Order[];
 }

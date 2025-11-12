@@ -2,9 +2,6 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
-  ManyToOne,
-  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
 
@@ -31,10 +28,4 @@ export class Product {
   @CreateDateColumn()
   createdAt: Date;
 
-  //   @ManyToOne(() => Category, { onDelete: "CASCADE" })
-  //   @JoinColumn({ name: "category_id" })
-  //   category: Category;
-
-  //   @OneToMany(() => CartItem, (cartItem) => cartItem.product)
-  //   cartItems: CartItem[];
 }
