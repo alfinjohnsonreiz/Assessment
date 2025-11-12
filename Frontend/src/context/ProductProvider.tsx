@@ -11,6 +11,7 @@ import React, {
 type ProductcontextType = {
   products: ProductType[] | null;
   setProducts: React.Dispatch<React.SetStateAction<ProductType[] | null>>;
+  fetchingProducts:()=>void;
 };
 
 export const ProductContext = createContext<ProductcontextType | undefined>(
@@ -34,7 +35,7 @@ const ProductProvider: React.FC<ProductProviderProps> = ({ children }) => {
   }, []);
 
   return (
-    <ProductContext.Provider value={{ products,setProducts }}>
+    <ProductContext.Provider value={{ products,setProducts,fetchingProducts }}>
       {children}
     </ProductContext.Provider>
   );

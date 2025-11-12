@@ -9,3 +9,8 @@ export const fetchAllProductsApi=async()=>{
     const response= await axiosInstance.get('/products')
     return response.data;
 }
+
+export const updateProductApi=async(product_id:string,formData:Object)=>{
+    const response= await axiosInstance.put(`/products/${product_id}`,formData)
+    return response.data;
+}
