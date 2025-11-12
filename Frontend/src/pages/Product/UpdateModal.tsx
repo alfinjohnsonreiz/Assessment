@@ -21,15 +21,14 @@ interface Props {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   selectedProduct: ProductType | null;
-  onUpdate?: (updatedProduct: ProductType) => void; // optional callback to update parent state
 }
 
 export function UpdateModal({
   open,
   setOpen,
   selectedProduct,
-  onUpdate,
 }: Props) {
+  
   const [name, setName] = useState(selectedProduct?.name || "");
   const [description, setDescription] = useState(
     selectedProduct?.description || ""

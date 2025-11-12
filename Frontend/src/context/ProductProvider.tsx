@@ -11,7 +11,7 @@ import React, {
 type ProductcontextType = {
   products: ProductType[] | null;
   setProducts: React.Dispatch<React.SetStateAction<ProductType[] | null>>;
-  fetchingProducts:()=>void;
+  fetchingProducts: () => void;
 };
 
 export const ProductContext = createContext<ProductcontextType | undefined>(
@@ -22,20 +22,21 @@ interface ProductProviderProps {
   children: ReactNode;
 }
 const ProductProvider: React.FC<ProductProviderProps> = ({ children }) => {
-  const [products, setProducts] = useState<ProductType[]| null>([]);
+  const [products, setProducts] = useState<ProductType[] | null>([]);
 
   const fetchingProducts = async () => {
     const response = await fetchAllProductsApi();
-    console.log("Response",response.data)
     setProducts(response.data);
   };
-  
+
   useEffect(() => {
     fetchingProducts();
   }, []);
 
   return (
-    <ProductContext.Provider value={{ products,setProducts,fetchingProducts }}>
+    <ProductContext.Provider
+      value={{ products, setProducts, fetchingProducts }}
+    >
       {children}
     </ProductContext.Provider>
   );
