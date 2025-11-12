@@ -22,15 +22,15 @@ export class PurchaseItem {
   product: Product;
 
   //each purchase item belong to one purchase
-  @ManyToOne(()=>Purchase,purchase=>purchase.purchaseItems,{ onDelete: "CASCADE" })
-  @JoinColumn({name:'purchase_id'})
-  purchase:Purchase
+  @ManyToOne(() => Purchase, (purchase) => purchase.purchaseItems, {
+    onDelete: "CASCADE",
+  })
+  @JoinColumn({ name: "purchase_id" })
+  purchase: Purchase;
 
   @Column({ type: "int", default: 1 })
   quantity: number;
 
   @Column({ type: "decimal", precision: 10, scale: 2 })
   purchasePrice: number;
-
-
 }
