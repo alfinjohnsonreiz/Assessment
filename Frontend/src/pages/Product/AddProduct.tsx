@@ -47,6 +47,7 @@ const AddProduct = (props: Props) => {
   };
   return (
     <div className="w-full flex flex-col items-center justify-center ">
+      <h2 className="text-2xl mb-2 font-medium">Add Your Products</h2>
       <div className="w-[70%] h-100  border-2 ">
         <form onSubmit={handleSubmit} className="flex-col gap-x-2 h-100 ">
           <div className="flex bg-white items-center justify-center gap-4 ">

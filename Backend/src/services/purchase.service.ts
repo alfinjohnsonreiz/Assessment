@@ -21,3 +21,7 @@ export const getAllPurchase=async(purchase_id:string)=>{
 export const getPurchaseById = async (purchase_id: string) => {
   return await purchaseRepo.findOneBy({ purchase_id });
 };
+
+export const getAllPurchasesService=async()=>{
+  return await purchaseRepo.find({relations:['purchaseItems']})
+}

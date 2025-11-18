@@ -81,7 +81,6 @@ const Sale = () => {
         items: selectedStock,
       };
       const response= await addSaleApi(reqbody)
-      // console.log(response)
       if(response.success){
         toast.success("Sale created")
         setBill(true)
@@ -97,7 +96,7 @@ const Sale = () => {
 
   return (
     <div>
-      <h2 className="text-center">Sale</h2>
+      <h2 className="text-center text-3xl font-medium">Sale</h2>
       <div className="flex flex-col items-center justify-center gap-4">
         <table border={1}>
           <thead className="border-2">
@@ -129,13 +128,13 @@ const Sale = () => {
                   <td className="border-2 px-4 py-2 text-left">
                     {prod.product?.taxPercentage}
                   </td>
-                  <td className="border-2 px-4 py-2 text-left">
+                  <td className={`border-2 px-4 py-2 text-left ${prod.stockValue==0 && "bg-red-500"}`}>
                     {prod.stockValue}
                   </td>
                   <td className="border-2 px-4 py-2 text-left">
                     <div className=" flex gap-2">
                       <Button
-                        disabled={select ? true : false}
+                        disabled={select || prod.stockValue==0 ? true : false}
                         onClick={() => handleSelect(prod.stock_id, prod.price)}
                       >
                         <FaCheck />
@@ -180,12 +179,12 @@ const Sale = () => {
           <Button onClick={()=>setOpen(true)}>Sale</Button>
         </div>
         <div className="mt-4 p-4 border rounded w-full max-w-md">
-          <p>Total Amount: ₹{totalAmount.toFixed(2)}</p>
+          <p>Total Amount: Rs. {totalAmount.toFixed(2)}</p>
           <p>
-            Discount ({discount}%): ₹
+            Discount ({discount}): 
             {((totalAmount * discount) / 100).toFixed(2)}
           </p>
-          <p><strong>Net Payable:</strong> ₹{(discountedTotal).toFixed(2)}</p>
+          <p><strong>Net Payable:</strong> Rs. {(discountedTotal).toFixed(2)}</p>
         </div>
         {bill&&(
           <div>

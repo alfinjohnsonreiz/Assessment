@@ -54,7 +54,7 @@ const DisplayProduct: React.FC = () => {
   return (
     <div className="">
       <div className="flex justify-center gap-2 ">
-        <h2 className="text-2xl ">Products</h2>
+        <h2 className="text-2xl font-medium ">Products</h2>
         {/* <Button>Add Product</Button> */}
       </div>
 
@@ -67,24 +67,24 @@ const DisplayProduct: React.FC = () => {
             <th className="border px-4 py-2 text-left">Stock</th>
             <th className="border px-4 py-2 text-left">Tax %</th>
             <th className="border px-4 py-2 text-left">Created At</th>
-            <th className="border px-4 py-2 text-left">Actions</th>
+            <th className="border px-4 py-2 text-center">Actions</th>
           </tr>
         </thead>
         <tbody>
           {products.map((product: ProductType) => (
             <tr key={product.product_id}>
               <td className="border px-4 py-2">{product.name}</td>
-              <td className="border px-4 py-2">{product.description}</td>
+              <td className="border px-4 py-2 truncate">{product.description}</td>
               <td className="border px-4 py-2">{product.price}</td>
               <td className="border px-4 py-2">
                 {product.currentStock ? "Available" : "Out of Stock"}
               </td>
               <td className="border px-4 py-2">{product.taxPercentage}</td>
               <td className="border px-4 py-2">
-                {new Date(product.createdAt).toLocaleString()}
+                {new Date(product.createdAt).toLocaleDateString()}
               </td>
               <td>
-                <div>
+                <div className="flex justify-center gap-3">
                   <Button onClick={() => handleUpdateClick(product)}>
                     update
                   </Button>

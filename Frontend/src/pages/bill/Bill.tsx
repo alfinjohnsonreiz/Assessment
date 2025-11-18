@@ -2,7 +2,7 @@ import { fetchBillsApi } from "@/api/modules/bill.api";
 import { useEffect, useState } from "react";
 
 
-interface SaleItemData {
+export interface SaleItemData {
   basePrice: string;
   productName: string;
   quantity: number;
@@ -12,7 +12,7 @@ interface SaleItemData {
   taxPrice: string;
 }
 
-interface SaleData {
+export interface SaleData {
   actualAmount: string;
   discount: string;
   paidAmount: string;
@@ -21,7 +21,7 @@ interface SaleData {
   createdAt: string;
   saleItems: SaleItemData[];
 }
-interface BillsData {
+export interface BillsData {
   bill_id: string;
   actualAmount: string;
   discount: string;
@@ -45,16 +45,16 @@ const Bill = () => {
     fetching();
   }, []);
   return (
-    <div>
+    <div className="w-full">
       <h1 className="text-2xl">Sales & Bills</h1>
-      <div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 mt-4 gap-3">
         {bills.length == 0 ? (
           <div className="w-full border-2 bg-gray-100 border-dotted h-64 text-center flex items-center justify-center">
             <h2 className="text-xl">No Bills and Sales Available</h2>
           </div>
         ) : (
           bills.map((bill) => (
-            <div key={bill.bill_id} className="border p-2 mb-2">
+            <div key={bill.bill_id} className="border bg-gray-200 p-2 mb-2">
               <p className="font-medium text-[16px]">
                 Bill ID:
                 <span className="font-light ml-2 text-gray-700">

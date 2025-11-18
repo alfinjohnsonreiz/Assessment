@@ -18,10 +18,14 @@ export const updateSaleService=async(sale_id:string,saleData:Partial<Sale>)=>{
 
 export const getSaleById = async (sale_id: string) => {
   return await saleRepo.findOne({where:{sale_id},
-relations:['saleItems','saleItems.product']});
+relations:['saleItems','saleItems']});
 };
 
 export const displaySaleSerivce = async (sale_id: string) => {
   const sale = await saleRepo.find({ where: { sale_id } ,relations:['saleItems']});
   return sale;
 };
+
+export const fetchAllSalesService=async()=>{
+  return await saleRepo.find({relations:['saleItems']})
+}

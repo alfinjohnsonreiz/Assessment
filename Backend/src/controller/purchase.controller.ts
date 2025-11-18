@@ -3,7 +3,7 @@ import { ApiError } from "../utils/ApiError";
 import { getProductById } from "../services/product.service";
 import { Purchase } from "../entities/Purchase";
 import { AppDataSource } from "../config/data-source";
-import { addPurchaseService, getAllPurchase } from "../services/purchase.service";
+import { addPurchaseService, getAllPurchase, getAllPurchasesService } from "../services/purchase.service";
 import { addPurchaseItemService } from "../services/purchaseItem.service";
 import {  updateAddStockService } from "../services/stock.service";
 
@@ -53,6 +53,19 @@ export const createPurchaseHandler=async(req: Request,res: Response,next: NextFu
             data:fullPurchase
         })
 
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const getAllPurchasesHandler=async(req: Request,res: Response,next: NextFunction)=>{
+    try {
+        const purchases= await getAllPurchasesService();
+        
+        return res.status(201).json({
+            success:true,
+            message:"Purchase Added Success",
+            data:purchases})
     } catch (error) {
         next(error)
     }

@@ -37,5 +37,5 @@ export const getProductByName = async (name: string) => {
 };
 
 export const getAllProductsService=async()=>{
-    return await productRepo.find();
+    return await productRepo.find({order:{'name':'ASC'}});
 }

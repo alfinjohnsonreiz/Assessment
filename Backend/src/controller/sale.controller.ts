@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from "express"
-import { addSaleService, displaySaleSerivce, getSaleById, updateSaleService } from "../services/sale.service";
+import e, { NextFunction, Request, Response } from "express"
+import { addSaleService, displaySaleSerivce, fetchAllSalesService, getSaleById, updateSaleService } from "../services/sale.service";
 import { ApiError } from "../utils/ApiError";
 // import { getProductById } from "../services/product.service";
 import { addSaleItemService } from "../services/saleItem.service";
@@ -77,6 +77,19 @@ export const addSaleHandler=async(req:Request,res:Response,next:NextFunction)=>{
             message:"Sale created",
             success:true,
             data:bill
+        })
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const displaySalesHandler=async(req:Request,res:Response,next:NextFunction)=>{
+    try {
+        const sales=await fetchAllSalesService()
+        res.status(201).json({
+            message:"Sales Fetched",
+            success:true,
+            data:sales
         })
     } catch (error) {
         next(error)
