@@ -4,10 +4,13 @@ const Sidebar = () => {
 
   const menuItems = [
     { name: "Dashboard", path: "/" },
-    { name: "Add Product", path: "/" },
-    { name: "Display Products", path: "/products" },
-    { name: "Purchase", path: "/purchase" },
-    { name: "Purchase", path: "/settings" },
+    { name: "Add Product", path: "/add-product" },
+    { name: "Products", path: "/products" },
+    // { name: "Purchase", path: "/purchase" },
+    { name: "Purchase", path: "/newpurchase" },
+    { name: "Stock", path: "/stock" },
+    { name: "Sale", path: "/sale" },
+    { name: "Sales & Bills", path: "/bill" },
   ];
 
   return (

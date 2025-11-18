@@ -13,7 +13,7 @@ export const createProductHandler=async(req: Request,res: Response,next: NextFun
             throw new ApiError("Product name must be unique",409)
         }
 
-        const product=await addProductService(updatedName,description,price,taxPercentage);
+        const product=await addProductService(updatedName.toUpperCase(),description,price,taxPercentage);
 
         return res.status(200).json({
             success:true,
@@ -28,6 +28,7 @@ export const createProductHandler=async(req: Request,res: Response,next: NextFun
 
 export const deleteProductHandler=async(req: Request,res: Response,next: NextFunction)=>{
     try {
+        console.log("hiiteed")
         const product_id = req.params.product_id;
 
         const product=await getProductById(product_id);
@@ -59,9 +60,9 @@ export const updateProductHanlder=async(req: Request,res: Response,next: NextFun
             message: "Product not found",
          });
         }
-
+        const updatedName=(name) as string
         const productData={
-            name,
+            name:updatedName.toUpperCase(),
             description,
             price,
             taxPercentage

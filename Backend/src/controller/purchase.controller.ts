@@ -5,19 +5,11 @@ import { Purchase } from "../entities/Purchase";
 import { AppDataSource } from "../config/data-source";
 import { addPurchaseService, getAllPurchase } from "../services/purchase.service";
 import { addPurchaseItemService } from "../services/purchaseItem.service";
-import {  updateStockService } from "../services/stock.service";
+import {  updateAddStockService } from "../services/stock.service";
 
 const purchaseRepo = AppDataSource.getRepository(Purchase);
 
-// req.body = {
-//   totalAmount: number,
-//   items: [
-//     {
-//       product_id: string,
-//       quantity: number,
-//     }
-//   ]
-// }
+
 
 export const createPurchaseHandler=async(req: Request,res: Response,next: NextFunction)=>{
     try {
@@ -45,8 +37,10 @@ export const createPurchaseHandler=async(req: Request,res: Response,next: NextFu
                 purchasePrice: product.price * item.quantity ,
             })
 
-            await updateStockService({product,quantity:item.quantity})
-
+            const stock=await updateAddStockService(product,Number(item.quantity))
+             if(!stock){
+                throw new ApiError("Error in creating stock",409)
+            }
         }
 
         

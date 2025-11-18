@@ -4,6 +4,8 @@ import productRouter from "./routes/product.routes";
 import purchaseRouter from "./routes/purchase.routes";
 import saleRouter from "./routes/sale.route";
 import cors from "cors";
+import stockRouter from "./routes/stock.routes";
+import billRouter from "./routes/bill.routes";
 
 const app = express();
 app.use(express.json());
@@ -19,6 +21,8 @@ app.use(
 app.use("/products", productRouter);
 app.use("/purchase", purchaseRouter);
 app.use('/sale',saleRouter)
+app.use('/stock',stockRouter)
+app.use('/bill',billRouter)
 app.use(errorHandler);
 
 export default app;

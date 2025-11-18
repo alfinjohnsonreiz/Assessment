@@ -3,17 +3,25 @@ import { Sale } from "../entities/Sale";
 
 const saleRepo = AppDataSource.getRepository(Sale);
 
-export const addSaleServie = async (totalAmount: number,discount:number) => {
+export const addSaleService = async (totalAmount: number) => {
   const sale =  saleRepo.create({
-    totalAmount,discount
+    totalAmount
   });
   return  await saleRepo.save(sale);
 };
 
-
+export const updateSaleService=async(sale_id:string,saleData:Partial<Sale>)=>{
+ await saleRepo.update({sale_id},saleData)
+ return await saleRepo.findOne({where:{sale_id},relations:['saleItems']})
+}
 
 
 export const getSaleById = async (sale_id: string) => {
   return await saleRepo.findOne({where:{sale_id},
 relations:['saleItems','saleItems.product']});
+};
+
+export const displaySaleSerivce = async (sale_id: string) => {
+  const sale = await saleRepo.find({ where: { sale_id } ,relations:['saleItems']});
+  return sale;
 };

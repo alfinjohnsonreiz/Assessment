@@ -9,11 +9,18 @@ export class Sale{
     @OneToMany(()=>SaleItem,(item)=>item.sale ,{onDelete:'CASCADE'})
     saleItems:SaleItem[]
 
-    @Column()
+    @Column("decimal",{nullable:true})
     totalAmount:number
 
-    @Column()
+    @Column("decimal",{nullable:true})
+    paidAmount:number;
+    
+    @Column("decimal",{nullable:true})
     discount:number
+
+    @Column("decimal",{nullable:true})
+    tax:number
+
 
     @CreateDateColumn()
     createdAt:Date;
